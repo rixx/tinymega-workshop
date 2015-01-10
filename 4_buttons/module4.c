@@ -32,10 +32,16 @@ int main(void)
     sei();*/
 
     while (1) {
-        // PINF == 1, weil button erstmal nicht gedrückt
         while (PINF){};
+
         larson();
-        while (!(PINF & 1)) {};
+
+        uint8_t bounce = 1;
+        while (bounce) {
+            bounce = bounce << 1;
+            bounce |= (!(PINF & 1));
+            _delay_ms(10);
+        }
     }
 }
 
