@@ -1,0 +1,18 @@
+zwei schieberegister (master+slave), die auf master-clock-signal ineinader übertragen werden.
+verschiedene bit rates, lsb oder msb first, end of transmission interrupt, …
+connection: miso, mosi, sck, !ss. transmission starts by pulling !ss low, stops/synchronizes when !ss is high.
+once the master has control of the !ss line, writing a byte to the SPI data register starts the clock generator and shifts that byte around.
+clock never over f_osc/4
+
+to do:
+to enable: write power reduction spi bit to 0 (PRSPI). PRR0[2] = PRSPI
+           spcr: 185
+           gain control of !ss (master: set mosi, sck and !ss to output; slave: to input)
+           set spie (interrupt enable) in spcr!
+           put data into spdr
+           signal end of packet by pulling !ss high
+
+           slaves just get an interrupt when spif (end of transmission) is set
+           can write to spdr before reading (because reading uses the buffer)
+
+
