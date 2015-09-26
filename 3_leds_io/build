@@ -1,0 +1,9 @@
+#compile:
+
+avr-gcc -mmcu=atmega32u4 -DF_CPU=16000000UL -Os -o module3.elf module3.c
+avr-objcopy -O ihex module3.elf module3.hex
+avr-size module3.elf
+
+sudo dfu-programmer atmega32u4 erase
+sudo dfu-programmer atmega32u4 flash module3.hex
+sudo dfu-programmer atmega32u4 start

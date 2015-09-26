@@ -10,3 +10,7 @@
 * test circuits used
 * package information, solder patterns
 * irrelevant stuff
+
+# LEDs
+* Kathode = - = kurzes Bein
+* Halbleiter = +

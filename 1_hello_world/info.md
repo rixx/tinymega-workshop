@@ -1,9 +1,11 @@
+#Intro
+
 tristate: input only, and only when no pull-up is there (obv)
 
-[0,1]:0
-[2,5]:1
+    [0,1]:0
+    [2,5]:1
 
-GPIO ports BCDEF + 0..7 -- BUT not all ports have all available!
+GPIO ports BCDEF + 0..7 -- BUT not all ports have all bits available!
 
 Dinge auf einem Port können synchron umgeschaltet werden, b/c memory mapping
 Each port has three registers: PORTx (ausgabe, pull-up [default 0]), PINx (lesen), DDRx (config)
